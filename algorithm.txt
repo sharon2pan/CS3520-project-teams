@@ -1,0 +1,61 @@
+Purpose of this program: 
+  1. To create groups of 3 or 4 from the given students, giving priority to students' preferences of who they want to work with.
+  2. Students should NOT be placed in a group with someone they mentioned they do not want to work with. 
+  3. Effectiveness of groups are found by adding up their individual scores for level of experience with C++, gdb, and algorithms
+    - A table should be printed with these 3 numbers for each team
+
+CSV file has information in this order:
+  1. Username
+  2. Level of experience with C++
+  3. Level of experience with gdb?
+  4. Level of experience in algorithms?
+  5. students you do NOT want to work with?
+  6. students that you would like to work with?
+  _________________________________________________________________________
+
+Data Structure:
+
+One data class used will be Student (either a struct or class), which will contain all of the information relating to the student, such as their username, skill levels, and who they do and don't want to work with.
+Students are directly related to each other through the notWork and yesWork vector, which represent the Students that this person does not want to work with and does want to work with, respectively.
+
+Vectors were largely used in the program because of you are able to continuously add elements and it is not restricted by a certain size. Therefore, it is easy to add and delete elements. Vectors will be used in the program to keep track of lists of students or a list of strings from reading the csv file.   
+
+For the parts where you knew the specific size it should be and it is known that count never changes, such as how many scores there should be when printing out th values, arrays were used to store the values. It will be easy to access elements using specific indices.  
+  _________________________________________________________________________
+
+Pseudocode: 
+
+  class Student:
+    string username;
+    int scoreC++;
+    int scoreGDB;
+    int scoreAlgo;
+    vector<Student> notWork;
+    vector<Student> yesWork;
+    bool inGroup;
+
+  void printScores(int scoreC++, int scoreGDB, int scoreAlgo) {
+    cout << "C++" << "gdb" << "Algorithms" << endl;
+    cout << "Team" << scoreC++ << scoreGDB << scoreAlgo << endl;
+  }
+  
+  in the main fxn:
+    1. get user input for group size and file input
+    2. create an empty vector of Students class --> represents all of the Students that are in the class
+    3. for each line in the csv file, create a new Student and add it to class
+    4. create an empty array of ints scoreSum --> represents the sum of individual scores for C++. gdb, algo (necessary?)
+    5. create an empty vector<vector<Student>> totalTeams --> represents the total number of teams there are in the class
+    6. ensure number of students is divisible by teamSize
+     - numStudent % teamSize == 0
+    7. if 6 is true, then for each Student in class... use iterator?
+    8. create an empty vector of Students team --> represents a group of Students
+    9. iterate through class to find usernames that match those of the students this person wants to work with + check to make sure the username does not match any of those of students this person does not want to work with + if Student is not currently in a team
+    10. if 9 is true for a Student, add this Student to team and make inGroup true
+    11. after going through class, add up all the respective scores for all Students in that team and add to scoreSum
+      - or create a function printScores that takes in 3 args and prints them out
+    12. add team into totalTeams
+    13. for remaining students who did not yet get put into a team, put them in groups by skill --> think about it more mathematicailly
+      - if the average of all the scores is between 5 and 7 inclusive, then it is a balanced group
+    14. write totalTeams into a new CSV file
+    _________________________________________________________________________
+
