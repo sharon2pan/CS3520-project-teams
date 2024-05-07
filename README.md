@@ -25,6 +25,7 @@ These are the files in this repository:
 - student.hpp : header file for a struct representing a Student
 
 The purpose of this program is to split a roster of students into teams of 3-4, ensuring that higher preference is given to students’ choice of team members than the need for skills-balanced teams. These are some of the requirements that should be met:
+
     1. The teacher MUST honor student’s request for “DONOT want to work with someone”.
     2. The teacher SHOULD honor student’s request to work with someone as much as possible.
     3. Teams SHOULD be “skill-balanced” as much as possible. For example, you want to make sure that each team has someone who is knowledgeable in the programming language and is experienced in 
